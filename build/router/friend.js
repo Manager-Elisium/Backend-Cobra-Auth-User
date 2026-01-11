@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FriendRouter = void 0;
+const express_1 = __importDefault(require("express"));
+const friend_1 = require("src/controller/friend");
+let router = express_1.default.Router();
+exports.FriendRouter = router;
+const auth_token_1 = require("src/middleware/auth.token");
+router.get("/search", auth_token_1.verifyAccessToken, friend_1.findFriend);
+router.get("/send-request", auth_token_1.verifyAccessToken, friend_1.sendFriendRequest);
+router.get("/approval-request", auth_token_1.verifyAccessToken, friend_1.approvalFriendRequest);
+router.get("/pending-friend-list", auth_token_1.verifyAccessToken, friend_1.pendingFriendRequest);
+router.get("/sending-friend-list", auth_token_1.verifyAccessToken, friend_1.sendingFriendRequest);
+router.get("/friend-list", auth_token_1.verifyAccessToken, friend_1.listFriend);
+router.get("/get-friend-id-list", auth_token_1.verifyAccessToken, friend_1.getFriendId);
+router.get("/online-friend-list", auth_token_1.verifyAccessToken, friend_1.onlineListFriend);
+router.get("/my-friend-list/:id", friend_1.leaderBoardFriendUserDetails);
+router.get("/country-user-list/:id", friend_1.leaderBoardCountryUserDetails);
+router.post("/list-user-details", friend_1.leaderBoardUserDetails);
+router.post("/search-invite-club-user", friend_1.serachInvitedUserClub);
+router.get("/search-user", auth_token_1.verifyAccessToken, friend_1.searchUserNameAndId);
