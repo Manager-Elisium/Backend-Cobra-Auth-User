@@ -87,7 +87,7 @@ async function list_sending_friendRequestService(id: any) {
 
 async function list_friendService(id: any) {
     try {
-        let coinInfo = await axios.get(`http://192.168.1.46:3004/player-profile/get-player-gift/${id}`, {
+        let coinInfo = await axios.get(`http://13.203.103.227:3004/player-profile/get-player-gift/${id}`, {
             headers: {
                 "Content-Type": "application/json"
             }
